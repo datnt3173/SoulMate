@@ -23,6 +23,6 @@ SoulMate được thiết kế với mục tiêu tạo ra một môi trường a
 Liên Hệ:
 
 Website: (Tạm thời chưa mở)
-Email: support@mingleconnect.com
+Email: (Tạm thời chưa mở)
 Địa chỉ: (Tạm thời chưa mở)
-Hãy tham gia cùng chúng tôi trên MingleConnect và khám phá những cơ hội gặp gỡ mới mẻ ngay hôm nay!
+Hãy tham gia cùng chúng tôi trên SoulMate và khám phá những cơ hội gặp gỡ mới mẻ ngay hôm nay!
