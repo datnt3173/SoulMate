@@ -1,0 +1,14 @@
+D:\SoulMate\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.deps.json
+D:\SoulMate\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.runtimeconfig.json
+D:\SoulMate\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.dll
+D:\SoulMate\DataAccessLayer\bin\Debug\net7.0\DataAccessLayer.pdb
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.AssemblyReference.cache
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.AssemblyInfoInputs.cache
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.AssemblyInfo.cs
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.dll
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\refint\DataAccessLayer.dll
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.pdb
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\DataAccessLayer.genruntimeconfig.cache
+D:\SoulMate\DataAccessLayer\obj\Debug\net7.0\ref\DataAccessLayer.dll

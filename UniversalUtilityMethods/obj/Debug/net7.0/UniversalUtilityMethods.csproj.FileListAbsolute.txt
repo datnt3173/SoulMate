@@ -1,0 +1,11 @@
+D:\SoulMate\UniversalUtilityMethods\bin\Debug\net7.0\UniversalUtilityMethods.deps.json
+D:\SoulMate\UniversalUtilityMethods\bin\Debug\net7.0\UniversalUtilityMethods.dll
+D:\SoulMate\UniversalUtilityMethods\bin\Debug\net7.0\UniversalUtilityMethods.pdb
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.AssemblyInfoInputs.cache
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.AssemblyInfo.cs
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.csproj.CoreCompileInputs.cache
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.dll
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\refint\UniversalUtilityMethods.dll
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.pdb
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\ref\UniversalUtilityMethods.dll

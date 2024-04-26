@@ -1,0 +1,17 @@
+D:\SoulMate\BusinessLogicLayer\bin\Debug\net7.0\BusinessLogicLayer.deps.json
+D:\SoulMate\BusinessLogicLayer\bin\Debug\net7.0\BusinessLogicLayer.runtimeconfig.json
+D:\SoulMate\BusinessLogicLayer\bin\Debug\net7.0\BusinessLogicLayer.dll
+D:\SoulMate\BusinessLogicLayer\bin\Debug\net7.0\BusinessLogicLayer.pdb
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.csproj.AssemblyReference.cache
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.AssemblyInfoInputs.cache
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.AssemblyInfo.cs
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.csproj.CoreCompileInputs.cache
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.dll
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\refint\BusinessLogicLayer.dll
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.pdb
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.genruntimeconfig.cache
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\ref\BusinessLogicLayer.dll
+D:\SoulMate\BusinessLogicLayer\bin\Debug\net7.0\DataAccessLayer.dll
+D:\SoulMate\BusinessLogicLayer\bin\Debug\net7.0\DataAccessLayer.pdb
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.csproj.CopyComplete
