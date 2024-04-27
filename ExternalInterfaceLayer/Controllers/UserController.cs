@@ -3,6 +3,7 @@ using BusinessLogicLayer.Viewmodels.User;
 using DataAccessLayer.Entities.Base;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Protocol.Core.Types;
 
 namespace ExternalInterfaceLayer.Controllers
 {
@@ -15,7 +16,35 @@ namespace ExternalInterfaceLayer.Controllers
         {
             _IUserService = userService;
         }
+        [HttpGet("GetInformation/{ID}")]
+        public async Task<ActionResult<UserVM>> GetInformation(string ID)
+        {
+            var user = await _IUserService.GetInformationByID(ID);
 
+            if (user == null)
+            {
+                return NotFound(); // Trả về mã lỗi 404 nếu không tìm thấy người dùng
+            }
+
+            return Ok(user); // Trả về dữ liệu người dùng dưới dạng JSON
+        }
+        [HttpGet]
+        [Route("GetAllInformationAsync")]
+        public async Task<IActionResult> GetAllInformationAsync()
+        {
+            var objCollection = await _IUserService.GetAllInformationAsync();
+
+            return Ok(objCollection);
+        } 
+        
+        [HttpGet]
+        [Route("GetAllActiveInformationAsync")]
+        public async Task<IActionResult> GetAllActiveInformationAsync()
+        {
+            var objCollection = await _IUserService.GetAllActiveInformationAsync();
+
+            return Ok(objCollection);
+        }
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] UserLoginModel model)
@@ -47,6 +76,16 @@ namespace ExternalInterfaceLayer.Controllers
             {
                 return BadRequest("Có lỗi trong quá trình thực hiện.");
             }
+        }
+        [HttpDelete("{ID}/{IDUserDelete}")]
+        public async Task<IActionResult> Remove(string ID, string IDUserDelete)
+        {
+            var success = await _IUserService.RemoveAsync(ID, IDUserDelete);
+            if (success)
+            {
+                return NoContent();
+            }
+            return NotFound();
         }
     }
 }

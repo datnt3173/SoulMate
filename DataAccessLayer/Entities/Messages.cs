@@ -19,7 +19,7 @@ namespace DataAccessLayer.Entities
         // Thêm các thuộc tính navigation
         public virtual ApplicationUser Sender { get; set; }
         public virtual ApplicationUser Receiver { get; set; }
-
+        public virtual ICollection<ImageData> ImageData { get; set; }
         public virtual ICollection<UserMessages> UserMessages { get; set; }
     }
 }

@@ -65,6 +65,57 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("ChatRooms");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.Comment", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("IDPost")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("IDUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifieBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifieDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IDPost");
+
+                    b.HasIndex("IDUser");
+
+                    b.ToTable("Comment");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.ExtraInformation", b =>
                 {
                     b.Property<Guid>("ID")
@@ -121,6 +172,74 @@ namespace DataAccessLayer.Migrations
                         .IsUnique();
 
                     b.ToTable("ExtraInformation");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.ImageData", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("EncodedImage")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<Guid?>("IDComment")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("IDMessage")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("IDPost")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("IDReaction")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("IDUser")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ImageLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifieBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifieDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IDComment");
+
+                    b.HasIndex("IDMessage");
+
+                    b.HasIndex("IDPost");
+
+                    b.HasIndex("IDReaction");
+
+                    b.HasIndex("IDUser");
+
+                    b.ToTable("ImageData");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Information", b =>
@@ -353,6 +472,111 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.Post", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IDUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifieBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifieDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IDUser");
+
+                    b.ToTable("Post");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Reaction", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("IDComment")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IDPost")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("IDUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifieBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifieDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IDComment");
+
+                    b.HasIndex("IDPost");
+
+                    b.HasIndex("IDUser");
+
+                    b.ToTable("Reaction");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.StyleOfLife", b =>
                 {
                     b.Property<Guid>("ID")
@@ -446,13 +670,13 @@ namespace DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "178e6cb8-1c28-4b65-8cb9-f0164e41dd27",
+                            Id = "55b353f7-afd4-4045-a3f1-20efa2d0ac00",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "f1c1eb6a-36bf-4049-afdf-7d82000fa97b",
+                            Id = "2a7b4e35-cb31-4a8a-ace5-1f9059389123",
                             Name = "Client",
                             NormalizedName = "Client"
                         });
@@ -641,161 +865,48 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+AcademicLevel>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<AcademicLevel>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+AlcoholConsumption>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<AlcoholConsumption>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+ChildDesire>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<ChildDesire>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+CommunicationStyle>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<CommunicationStyle>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+DatingPurposes>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<DatingPurposes>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+DietHabit>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<DietHabit>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+ExerciseHabit>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<ExerciseHabit>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+Gender>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<Gender>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+Interests>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<Interests>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+Language>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<Language>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+PersonalPronouns>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<PersonalPronouns>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+PersonalityType>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<PersonalityType>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+PetType>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<PetType>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+SexualOrientation>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<SexualOrientation>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+SleepHabit>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<SleepHabit>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+SmokingHabit>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<SmokingHabit>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+SocialMediaActivityLevel>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<SocialMediaActivityLevel>");
-                });
-
-            modelBuilder.Entity("System.Collections.Generic.List<DataAccessLayer.Entities.Base.EnumBase+Zodiac>", b =>
-                {
-                    b.Property<int>("Capacity")
-                        .HasColumnType("int");
-
-                    b.ToTable("List<Zodiac>");
-                });
-
             modelBuilder.Entity("DataAccessLayer.Entities.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ModifieBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifieDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Comment", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.Post", "Post")
+                        .WithMany("Comment")
+                        .HasForeignKey("IDPost")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany("Comment")
+                        .HasForeignKey("IDUser")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.ExtraInformation", b =>
@@ -807,6 +918,44 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.ImageData", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.Comment", "Comment")
+                        .WithMany("ImageData")
+                        .HasForeignKey("IDComment")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccessLayer.Entities.Messages", "Messages")
+                        .WithMany("ImageData")
+                        .HasForeignKey("IDMessage")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccessLayer.Entities.Post", "Post")
+                        .WithMany("ImageData")
+                        .HasForeignKey("IDPost")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccessLayer.Entities.Reaction", "Reaction")
+                        .WithMany("ImageData")
+                        .HasForeignKey("IDReaction")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany("ImageData")
+                        .HasForeignKey("IDUser")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Messages");
+
+                    b.Navigation("Post");
+
+                    b.Navigation("Reaction");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Information", b =>
@@ -877,6 +1026,44 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Sender");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.Post", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany("Post")
+                        .HasForeignKey("IDUser")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Reaction", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.Comment", "Comment")
+                        .WithMany("Reaction")
+                        .HasForeignKey("IDComment")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.Entities.Post", "Post")
+                        .WithMany("Reaction")
+                        .HasForeignKey("IDPost")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
+                        .WithMany("Reaction")
+                        .HasForeignKey("IDUser")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Post");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.StyleOfLife", b =>
                 {
                     b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
@@ -944,18 +1131,49 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("UserChatRooms");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.Comment", b =>
+                {
+                    b.Navigation("ImageData");
+
+                    b.Navigation("Reaction");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.Messages", b =>
                 {
+                    b.Navigation("ImageData");
+
                     b.Navigation("UserMessages");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Post", b =>
+                {
+                    b.Navigation("Comment");
+
+                    b.Navigation("ImageData");
+
+                    b.Navigation("Reaction");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Reaction", b =>
+                {
+                    b.Navigation("ImageData");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.ApplicationUser", b =>
                 {
+                    b.Navigation("Comment");
+
                     b.Navigation("ExtraInformation")
                         .IsRequired();
 
+                    b.Navigation("ImageData");
+
                     b.Navigation("Information")
                         .IsRequired();
+
+                    b.Navigation("Post");
+
+                    b.Navigation("Reaction");
 
                     b.Navigation("ReceivedMessages");
 

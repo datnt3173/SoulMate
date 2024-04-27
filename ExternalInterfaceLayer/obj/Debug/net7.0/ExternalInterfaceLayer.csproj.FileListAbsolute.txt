@@ -334,3 +334,4 @@ D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\BusinessLogicLayer.dll
 D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\DataAccessLayer.dll
 D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\BusinessLogicLayer.pdb
 D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\DataAccessLayer.pdb
+D:\SoulMate\ExternalInterfaceLayer\obj\Debug\net7.0\ExternalInterfaceLayer.sourcelink.json

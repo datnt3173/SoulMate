@@ -15,3 +15,4 @@ D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\ref\BusinessLogicLayer.dll
 D:\SoulMate\BusinessLogicLayer\bin\Debug\net7.0\DataAccessLayer.dll
 D:\SoulMate\BusinessLogicLayer\bin\Debug\net7.0\DataAccessLayer.pdb
 D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.csproj.CopyComplete
+D:\SoulMate\BusinessLogicLayer\obj\Debug\net7.0\BusinessLogicLayer.sourcelink.json

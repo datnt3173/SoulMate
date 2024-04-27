@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UniversalUtilityMethods")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+254fcc2e57331343cb85020ec18649e9930cb678")]
 [assembly: System.Reflection.AssemblyProductAttribute("UniversalUtilityMethods")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UniversalUtilityMethods")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,7 +14,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Security.Claims;
 using System.Text;
-using static DataAccessLayer.Entities.Base.EnumBase;
+using Microsoft.EntityFrameworkCore;
 namespace BusinessLogicLayer.Services.Implement
 {
     public class UserService : IUserService
@@ -189,7 +189,6 @@ namespace BusinessLogicLayer.Services.Implement
                 };
             }
         }
-
         public async Task<Response> RegisterAsync(RegisterUser registerUser, string role)
         {
             try
@@ -365,6 +364,159 @@ namespace BusinessLogicLayer.Services.Implement
 
                 };
             }
+        }
+        public async Task<UserVM> GetInformationByID(string ID)
+        {
+            var user = await _heartConnectIdentityDBContext.ApplicationUsers
+                .Where(u => u.Id == ID)
+                .Include(u => u.ExtraInformation)
+                .Include(u => u.StyleOfLife)
+                .Include(u => u.Information)
+                .Include(u => u.ImageData)
+                .Include(u => u.Post)
+                    .ThenInclude(p => p.Comment)
+                .FirstOrDefaultAsync();
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            var userVM = new UserVM
+            {
+                ID = user.Id,
+                ImageLink = user.ImageData.Any() ? user.ImageData.First().ImageLink : null,
+                IDExtraInformation = user.ExtraInformation.ID,
+                IDInformation = user.Information.ID,
+                IDStyleOfLife = user.StyleOfLife.ID,
+                Username = user.UserName,
+                Password = user.PasswordHash,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                //--------------------------------------------------//
+                IsActive = user.IsActive,
+                Status = user.Status,
+                FirstAndLastName = user.Information.FirstAndLastName,
+                BirthDate = user.Information.BirthDate,
+                JoinDate = user.Information.JoinDate,
+                Bio = user.Information.Bio,
+                Height = user.Information.Height,
+                Weight = user.Information.Weight,
+                JobTitle = user.Information.JobTitle,
+                School = user.Information.School,
+                CurrentPlaceOfResidence = user.Information.CurrentPlaceOfResidence,
+                Gender = user.Information.Gender,
+                SexualOrientation = user.Information.SexualOrientation,
+                DatingPurposes = user.Information.DatingPurposes,
+                PersonalPronouns = user.Information.PersonalPronouns,
+                Interests = user.Information.Interests,
+                Language = user.Information.Language,
+                //------------------------------------------------------------------//
+                Zodiac = user.ExtraInformation.Zodiac,
+                AcademicLevel = user.ExtraInformation.AcademicLevel,
+                PersonalityType = user.ExtraInformation.PersonalityType,
+                ChildDesire = user.ExtraInformation.ChildDesire,
+                CommunicationStyle = user.ExtraInformation.CommunicationStyle,
+                //------------------------------------------------------------------//
+                PetType = user.StyleOfLife.PetType,
+                AlcoholConsumption = user.StyleOfLife.AlcoholConsumption,
+                SmokingHabit = user.StyleOfLife.SmokingHabit,
+                DietHabit = user.StyleOfLife.DietHabit,
+                ExerciseHabit = user.StyleOfLife.ExerciseHabit,
+                SocialMediaActivityLevel = user.StyleOfLife.SocialMediaActivityLevel,
+                SleepHabit = user.StyleOfLife.SleepHabit,
+            };
+
+            return userVM;
+        }
+        public async Task<bool> RemoveAsync(string ID, string IDUserDelete)
+        {
+            using (var transaction = _heartConnectIdentityDBContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    var obj = await _heartConnectIdentityDBContext.ApplicationUsers.FirstOrDefaultAsync(c => c.Id == ID);
+
+                    if (obj != null)
+                    {
+                        obj.Status = 0;
+                        obj.DeleteDate = DateTime.Now;
+                        obj.DeleteBy = IDUserDelete;
+
+                        _heartConnectIdentityDBContext.ApplicationUsers.Attach(obj);
+                        await _heartConnectIdentityDBContext.SaveChangesAsync();
+
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    return false;
+                }
+            }
+        }
+        public async Task<List<UserDataVM>> GetAllInformationAsync()
+        {
+            var users = await _heartConnectIdentityDBContext.ApplicationUsers
+                .Include(u => u.Information) // Include thông tin liên quan
+                .Include(u => u.ImageData) // Include dữ liệu hình ảnh liên quan
+                .ToListAsync();
+
+            var userDataList = users.Select(u => new UserDataVM
+            {
+                ID = u.Id,
+                ImageLink = u.ImageData.Any() ? u.ImageData.First().ImageLink : null,
+                FirstAndLastName = u.Information?.FirstAndLastName,
+                BirthDate = u.Information?.BirthDate ?? DateTime.MinValue,
+                JoinDate = u.Information.JoinDate,
+                Username = u.UserName,
+                Email = u.Email,
+                ModifieBy = u.ModifieBy,
+                ModifieDate = u.ModifieDate,
+                DeleteBy = u.DeleteBy,
+                DeleteDate = u.DeleteDate,
+                PhoneNumber = u.PhoneNumber,
+                IsActive = u.IsActive,
+                Status = u.Status
+            }).ToList();
+
+            return userDataList;
+        }
+
+        public async Task<List<UserDataVM>> GetAllActiveInformationAsync()
+        {
+            var users = await _heartConnectIdentityDBContext.ApplicationUsers
+                .Where(c => c.IsActive == true && c.Status == 1)
+                .Include(u => u.Information) // Include thông tin liên quan
+                .Include(u => u.ImageData) // Include dữ liệu hình ảnh liên quan
+                .ToListAsync();
+
+            var userDataList = users.Select(u => new UserDataVM
+            {
+                ID = u.Id,
+                ImageLink = u.ImageData.Any() ? u.ImageData.First().ImageLink : null,
+                FirstAndLastName = u.Information?.FirstAndLastName,
+                BirthDate = u.Information?.BirthDate ?? DateTime.MinValue,
+                JoinDate = u.Information.JoinDate,
+                Username = u.UserName,
+                Email = u.Email,
+                ModifieBy = u.ModifieBy,
+                ModifieDate = u.ModifieDate,
+                DeleteBy = u.DeleteBy,
+                DeleteDate = u.DeleteDate,
+                PhoneNumber = u.PhoneNumber,
+                IsActive = u.IsActive,
+                Status = u.Status
+            }).ToList();
+
+            return userDataList;
         }
     }
 }
