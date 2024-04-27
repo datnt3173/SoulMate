@@ -31,24 +31,24 @@ namespace DataAccessLayer.ApplicationDBContext
         protected override void OnModelCreating(ModelBuilder builder)
         {
             //builder.Entity<UserMessages>().HasNoKey();
-            builder.Entity<List<DatingPurposes>>().HasNoKey();
-            builder.Entity<List<PersonalPronouns>>().HasNoKey();
-            builder.Entity<List<Language>>().HasNoKey();
-            builder.Entity<List<Interests>>().HasNoKey();
-            builder.Entity<List<Zodiac>>().HasNoKey();
-            builder.Entity<List<AcademicLevel>>().HasNoKey();
-            builder.Entity<List<PersonalityType>>().HasNoKey();
-            builder.Entity<List<ChildDesire>>().HasNoKey();
-            builder.Entity<List<CommunicationStyle>>().HasNoKey();
-            builder.Entity<List<PetType>>().HasNoKey();
-            builder.Entity<List<AlcoholConsumption>>().HasNoKey();
-            builder.Entity<List<SmokingHabit>>().HasNoKey();
-            builder.Entity<List<ExerciseHabit>>().HasNoKey();
-            builder.Entity<List<DietHabit>>().HasNoKey();
-            builder.Entity<List<SocialMediaActivityLevel>>().HasNoKey();
-            builder.Entity<List<SleepHabit>>().HasNoKey();
-            builder.Entity<List<Gender>>().HasNoKey();
-            builder.Entity<List<SexualOrientation>>().HasNoKey();
+            //builder.Entity<List<DatingPurposes>>().HasNoKey();
+            //builder.Entity<List<PersonalPronouns>>().HasNoKey();
+            //builder.Entity<List<Language>>().HasNoKey();
+            //builder.Entity<List<Interests>>().HasNoKey();
+            //builder.Entity<List<Zodiac>>().HasNoKey();
+            //builder.Entity<List<AcademicLevel>>().HasNoKey();
+            //builder.Entity<List<PersonalityType>>().HasNoKey();
+            //builder.Entity<List<ChildDesire>>().HasNoKey();
+            //builder.Entity<List<CommunicationStyle>>().HasNoKey();
+            //builder.Entity<List<PetType>>().HasNoKey();
+            //builder.Entity<List<AlcoholConsumption>>().HasNoKey();
+            //builder.Entity<List<SmokingHabit>>().HasNoKey();
+            //builder.Entity<List<ExerciseHabit>>().HasNoKey();
+            //builder.Entity<List<DietHabit>>().HasNoKey();
+            //builder.Entity<List<SocialMediaActivityLevel>>().HasNoKey();
+            //builder.Entity<List<SleepHabit>>().HasNoKey();
+            //builder.Entity<List<Gender>>().HasNoKey();
+            //builder.Entity<List<SexualOrientation>>().HasNoKey();
             CreateRoles(builder);
             base.OnModelCreating(builder);
             builder.Entity<IdentityUser>()
@@ -62,8 +62,12 @@ namespace DataAccessLayer.ApplicationDBContext
             builder.ApplyConfiguration(new InformationConfiguration());
             builder.ApplyConfiguration(new MessagesConfiguration());
             builder.ApplyConfiguration(new StyleOfLifeConfiguration());
+            builder.ApplyConfiguration(new PostConfiguration());
+            builder.ApplyConfiguration(new CommentConfiguration());
+            builder.ApplyConfiguration(new ReactionConfiguration());
             builder.ApplyConfiguration(new UserChatRoomsConfiguration());
             builder.ApplyConfiguration(new UserMessagesConfiguration());
+            builder.ApplyConfiguration(new ImageDataConfiguration());
         }
 
         private void CreateRoles(ModelBuilder builder)
@@ -82,5 +86,9 @@ namespace DataAccessLayer.ApplicationDBContext
         public virtual DbSet<StyleOfLife> StyleOfLife { get; set; } = null!;
         public virtual DbSet<UserChatRooms> UserChatRooms { get; set; } = null!;
         public virtual DbSet<UserMessages> UserMessages { get; set; } = null!;
+        public virtual DbSet<Post> Post { get; set; } = null!;
+        public virtual DbSet<Comment> Comment { get; set; } = null!;
+        public virtual DbSet<ImageData> ImageData { get; set; } = null!;
+        public virtual DbSet<Reaction> Reaction { get; set; } = null!;
     }
 }

@@ -293,5 +293,17 @@
             Asexual,            // Asexual - Vô tính dục
             Other               // Other orientation - Hướng tình dục khác
         }
+
+        public enum ReactionType
+        {
+            Like,
+            Dislike,
+            Love,
+            Haha,
+            Wow,
+            Sad,
+            Angry,
+            Share
+        }
     }
 }

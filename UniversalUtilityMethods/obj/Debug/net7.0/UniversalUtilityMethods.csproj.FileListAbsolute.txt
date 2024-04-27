@@ -9,3 +9,4 @@ D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.dll
 D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\refint\UniversalUtilityMethods.dll
 D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.pdb
 D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\ref\UniversalUtilityMethods.dll
+D:\SoulMate\UniversalUtilityMethods\obj\Debug\net7.0\UniversalUtilityMethods.sourcelink.json
