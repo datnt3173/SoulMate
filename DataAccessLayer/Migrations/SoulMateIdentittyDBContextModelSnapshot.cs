@@ -22,7 +22,7 @@ namespace DataAccessLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DataAccessLayer.Entities.ChatRooms", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.BlockedAccount", b =>
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
@@ -41,16 +41,62 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("IDBlockedUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("IDUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IDBlockedUser");
+
+                    b.HasIndex("IDUser");
+
+                    b.ToTable("BlockedAccount");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.ChatRooms", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CodeChatRooms")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("RoomName")
@@ -91,13 +137,10 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
@@ -148,13 +191,10 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PersonalityType")
@@ -205,9 +245,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<Guid?>("IDPost")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("IDReaction")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("IDUser")
                         .HasColumnType("nvarchar(450)");
 
@@ -215,13 +252,10 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
@@ -234,8 +268,6 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("IDMessage");
 
                     b.HasIndex("IDPost");
-
-                    b.HasIndex("IDReaction");
 
                     b.HasIndex("IDUser");
 
@@ -290,9 +322,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("Interests")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<string>("JobTitle")
                         .HasColumnType("nvarchar(max)");
 
@@ -302,10 +331,10 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("Language")
                         .HasColumnType("int");
 
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PersonalPronouns")
@@ -331,13 +360,13 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Information");
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.Intermediate.UserChatRooms", b =>
+            modelBuilder.Entity("DataAccessLayer.Entities.Intermediate.MessagesUserChatRooms", b =>
                 {
-                    b.Property<Guid>("IDChatRoom")
+                    b.Property<Guid>("IDMessages")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("IDUser")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("IDUserChatRooms")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreateBy")
                         .IsRequired()
@@ -352,19 +381,60 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.HasKey("IDChatRoom", "IDUser");
+                    b.HasKey("IDMessages", "IDUserChatRooms");
+
+                    b.HasIndex("IDUserChatRooms");
+
+                    b.ToTable("MessagesUserChatRooms");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Intermediate.UserChatRooms", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("IDChatRoom")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("IDUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IDChatRoom");
 
                     b.HasIndex("IDUser");
 
@@ -392,16 +462,13 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
@@ -445,16 +512,13 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("SentAt")
@@ -499,14 +563,14 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PostVisibility")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -541,7 +605,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("IDComment")
+                    b.Property<Guid?>("IDComment")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IDPost")
@@ -551,13 +615,10 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
@@ -575,6 +636,59 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("IDUser");
 
                     b.ToTable("Reaction");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.RelationshipAction", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("ActionType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CreateBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeleteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IDRelatedUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("IDUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("IDRelatedUser");
+
+                    b.HasIndex("IDUser");
+
+                    b.ToTable("RelationshipAction");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.StyleOfLife", b =>
@@ -609,13 +723,10 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ModifieBy")
+                    b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ModifieDate")
+                    b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PetType")
@@ -670,13 +781,13 @@ namespace DataAccessLayer.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "55b353f7-afd4-4045-a3f1-20efa2d0ac00",
+                            Id = "f9fe986d-a92b-4125-8dfa-b42f7d0bedd8",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "2a7b4e35-cb31-4a8a-ace5-1f9059389123",
+                            Id = "c97d0d51-2f51-41d1-8ccb-22b533d08b2a",
                             Name = "Client",
                             NormalizedName = "Client"
                         });
@@ -890,6 +1001,25 @@ namespace DataAccessLayer.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.BlockedAccount", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "BlockedUser")
+                        .WithMany()
+                        .HasForeignKey("IDBlockedUser")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "User")
+                        .WithMany("BlockedAccounts")
+                        .HasForeignKey("IDUser")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("BlockedUser");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.Comment", b =>
                 {
                     b.HasOne("DataAccessLayer.Entities.Post", "Post")
@@ -937,11 +1067,6 @@ namespace DataAccessLayer.Migrations
                         .HasForeignKey("IDPost")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("DataAccessLayer.Entities.Reaction", "Reaction")
-                        .WithMany("ImageData")
-                        .HasForeignKey("IDReaction")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("DataAccessLayer.Entities.ApplicationUser", "ApplicationUser")
                         .WithMany("ImageData")
                         .HasForeignKey("IDUser")
@@ -954,8 +1079,6 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Messages");
 
                     b.Navigation("Post");
-
-                    b.Navigation("Reaction");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Information", b =>
@@ -967,6 +1090,25 @@ namespace DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.Intermediate.MessagesUserChatRooms", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.Messages", "Messages")
+                        .WithMany("MessagesUserChatRooms")
+                        .HasForeignKey("IDMessages")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.Entities.Intermediate.UserChatRooms", "UserChatRooms")
+                        .WithMany("MessagesUserChatRooms")
+                        .HasForeignKey("IDUserChatRooms")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Messages");
+
+                    b.Navigation("UserChatRooms");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.Intermediate.UserChatRooms", b =>
@@ -1042,8 +1184,7 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("DataAccessLayer.Entities.Comment", "Comment")
                         .WithMany("Reaction")
                         .HasForeignKey("IDComment")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("DataAccessLayer.Entities.Post", "Post")
                         .WithMany("Reaction")
@@ -1062,6 +1203,29 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Comment");
 
                     b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.Entities.RelationshipAction", b =>
+                {
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", null)
+                        .WithMany("RelationshipActions")
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "RelatedUser")
+                        .WithMany()
+                        .HasForeignKey("IDRelatedUser")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.Entities.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("IDUser")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("RelatedUser");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DataAccessLayer.Entities.StyleOfLife", b =>
@@ -1138,9 +1302,16 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Reaction");
                 });
 
+            modelBuilder.Entity("DataAccessLayer.Entities.Intermediate.UserChatRooms", b =>
+                {
+                    b.Navigation("MessagesUserChatRooms");
+                });
+
             modelBuilder.Entity("DataAccessLayer.Entities.Messages", b =>
                 {
                     b.Navigation("ImageData");
+
+                    b.Navigation("MessagesUserChatRooms");
 
                     b.Navigation("UserMessages");
                 });
@@ -1154,13 +1325,10 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Reaction");
                 });
 
-            modelBuilder.Entity("DataAccessLayer.Entities.Reaction", b =>
-                {
-                    b.Navigation("ImageData");
-                });
-
             modelBuilder.Entity("DataAccessLayer.Entities.ApplicationUser", b =>
                 {
+                    b.Navigation("BlockedAccounts");
+
                     b.Navigation("Comment");
 
                     b.Navigation("ExtraInformation")
@@ -1176,6 +1344,8 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Reaction");
 
                     b.Navigation("ReceivedMessages");
+
+                    b.Navigation("RelationshipActions");
 
                     b.Navigation("SentMessages");
 

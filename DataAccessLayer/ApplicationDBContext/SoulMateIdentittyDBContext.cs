@@ -30,25 +30,7 @@ namespace DataAccessLayer.ApplicationDBContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            //builder.Entity<UserMessages>().HasNoKey();
-            //builder.Entity<List<DatingPurposes>>().HasNoKey();
-            //builder.Entity<List<PersonalPronouns>>().HasNoKey();
-            //builder.Entity<List<Language>>().HasNoKey();
-            //builder.Entity<List<Interests>>().HasNoKey();
-            //builder.Entity<List<Zodiac>>().HasNoKey();
-            //builder.Entity<List<AcademicLevel>>().HasNoKey();
-            //builder.Entity<List<PersonalityType>>().HasNoKey();
-            //builder.Entity<List<ChildDesire>>().HasNoKey();
-            //builder.Entity<List<CommunicationStyle>>().HasNoKey();
-            //builder.Entity<List<PetType>>().HasNoKey();
-            //builder.Entity<List<AlcoholConsumption>>().HasNoKey();
-            //builder.Entity<List<SmokingHabit>>().HasNoKey();
-            //builder.Entity<List<ExerciseHabit>>().HasNoKey();
-            //builder.Entity<List<DietHabit>>().HasNoKey();
-            //builder.Entity<List<SocialMediaActivityLevel>>().HasNoKey();
-            //builder.Entity<List<SleepHabit>>().HasNoKey();
-            //builder.Entity<List<Gender>>().HasNoKey();
-            //builder.Entity<List<SexualOrientation>>().HasNoKey();
+
             CreateRoles(builder);
             base.OnModelCreating(builder);
             builder.Entity<IdentityUser>()
@@ -60,6 +42,7 @@ namespace DataAccessLayer.ApplicationDBContext
             builder.ApplyConfiguration(new ExtraInformationConfiguration());
             builder.ApplyConfiguration(new ChatRoomsConfiguration());
             builder.ApplyConfiguration(new InformationConfiguration());
+            builder.ApplyConfiguration(new RelationshipActionConfiguration());
             builder.ApplyConfiguration(new MessagesConfiguration());
             builder.ApplyConfiguration(new StyleOfLifeConfiguration());
             builder.ApplyConfiguration(new PostConfiguration());
@@ -68,6 +51,8 @@ namespace DataAccessLayer.ApplicationDBContext
             builder.ApplyConfiguration(new UserChatRoomsConfiguration());
             builder.ApplyConfiguration(new UserMessagesConfiguration());
             builder.ApplyConfiguration(new ImageDataConfiguration());
+            builder.ApplyConfiguration(new MessagesUserChatRoomsConfiguration());
+            builder.ApplyConfiguration(new BlockedAccountConfiguration());
         }
 
         private void CreateRoles(ModelBuilder builder)
@@ -77,8 +62,10 @@ namespace DataAccessLayer.ApplicationDBContext
                     new IdentityRole() { Name = "Client", NormalizedName = "Client" }
                 );
         }
-
+        public DbSet<MessagesUserChatRooms> MessagesUserChatRooms { get; set; }
+        public virtual DbSet<BlockedAccount> BlockedAccount { get; set; } = null!;
         public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; } = null!;
+        public virtual DbSet<RelationshipAction> RelationshipAction { get; set; } = null!;
         public virtual DbSet<ChatRooms> ChatRooms { get; set; } = null!;
         public virtual DbSet<ExtraInformation> ExtraInformation { get; set; } = null!;
         public virtual DbSet<Information> Information { get; set; } = null!;

@@ -335,3 +335,9 @@ D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\DataAccessLayer.dll
 D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\BusinessLogicLayer.pdb
 D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\DataAccessLayer.pdb
 D:\SoulMate\ExternalInterfaceLayer\obj\Debug\net7.0\ExternalInterfaceLayer.sourcelink.json
+D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\Amazon.Lambda.APIGatewayEvents.dll
+D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\Amazon.Lambda.ApplicationLoadBalancerEvents.dll
+D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\Amazon.Lambda.AspNetCoreServer.dll
+D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\Amazon.Lambda.Core.dll
+D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\Amazon.Lambda.Logging.AspNetCore.dll
+D:\SoulMate\ExternalInterfaceLayer\bin\Debug\net7.0\Amazon.Lambda.Serialization.SystemTextJson.dll

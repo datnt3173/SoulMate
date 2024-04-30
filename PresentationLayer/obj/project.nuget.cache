@@ -1,9 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "fQGI+MAsZKQ6JhTUBRN808j9KItvPXnnRQORerrqv4OG9dRq8/FGJrDZ3lj7A3fLiOKECqbyGM7fa4MLSm3/zw==",
+  "dgSpecHash": "tVoDn8Au9Ry9/lcRoBGX4ymiLzplA4Gs/p3Qb78SAVCTRu4JkRTehNWxmkUKlm4oY6qONb8+15mT2bH/pp2bxQ==",
   "success": true,
   "projectFilePath": "D:\\SoulMate\\PresentationLayer\\PresentationLayer.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nhamt\\.nuget\\packages\\amazon.lambda.apigatewayevents\\2.7.0\\amazon.lambda.apigatewayevents.2.7.0.nupkg.sha512",
+    "C:\\Users\\nhamt\\.nuget\\packages\\amazon.lambda.applicationloadbalancerevents\\2.2.0\\amazon.lambda.applicationloadbalancerevents.2.2.0.nupkg.sha512",
+    "C:\\Users\\nhamt\\.nuget\\packages\\amazon.lambda.aspnetcoreserver\\9.0.0\\amazon.lambda.aspnetcoreserver.9.0.0.nupkg.sha512",
+    "C:\\Users\\nhamt\\.nuget\\packages\\amazon.lambda.core\\2.2.0\\amazon.lambda.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\nhamt\\.nuget\\packages\\amazon.lambda.logging.aspnetcore\\3.1.0\\amazon.lambda.logging.aspnetcore.3.1.0.nupkg.sha512",
+    "C:\\Users\\nhamt\\.nuget\\packages\\amazon.lambda.serialization.systemtextjson\\2.4.1\\amazon.lambda.serialization.systemtextjson.2.4.1.nupkg.sha512",
     "C:\\Users\\nhamt\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\nhamt\\.nuget\\packages\\automapper.collection\\10.0.0\\automapper.collection.10.0.0.nupkg.sha512",
     "C:\\Users\\nhamt\\.nuget\\packages\\automapper.collection.entityframeworkcore\\10.0.0\\automapper.collection.entityframeworkcore.10.0.0.nupkg.sha512",

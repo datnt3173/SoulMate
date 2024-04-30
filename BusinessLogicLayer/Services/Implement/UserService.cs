@@ -265,7 +265,6 @@ namespace BusinessLogicLayer.Services.Implement
                         Language = registerUser.Language,
                         CreateDate = DateTime.Now,
                         CreateBy = newUser.Id,
-                        IsActive = true,
                         Status = 1
                     };
                     _heartConnectIdentityDBContext.Information.Add(information);
@@ -281,7 +280,6 @@ namespace BusinessLogicLayer.Services.Implement
                         CommunicationStyle = registerUser.CommunicationStyle,
                         CreateDate = DateTime.Now,
                         CreateBy = newUser.Id,
-                        IsActive = true,
                         Status = 1
                     };
                     _heartConnectIdentityDBContext.ExtraInformation.Add(extraInformation);
@@ -299,7 +297,6 @@ namespace BusinessLogicLayer.Services.Implement
                         SleepHabit = registerUser.SleepHabit,
                         CreateDate = DateTime.Now,
                         CreateBy = newUser.Id,
-                        IsActive = true,
                         Status = 1
                     };
                     _heartConnectIdentityDBContext.StyleOfLife.Add(styleOfLife);
@@ -394,7 +391,6 @@ namespace BusinessLogicLayer.Services.Implement
                 PhoneNumber = user.PhoneNumber,
                 Email = user.Email,
                 //--------------------------------------------------//
-                IsActive = user.IsActive,
                 Status = user.Status,
                 FirstAndLastName = user.Information.FirstAndLastName,
                 BirthDate = user.Information.BirthDate,
@@ -439,7 +435,7 @@ namespace BusinessLogicLayer.Services.Implement
 
                     if (obj != null)
                     {
-                        obj.Status = 0;
+                        obj.IsActive = false;
                         obj.DeleteDate = DateTime.Now;
                         obj.DeleteBy = IDUserDelete;
 
@@ -483,7 +479,6 @@ namespace BusinessLogicLayer.Services.Implement
                 DeleteBy = u.DeleteBy,
                 DeleteDate = u.DeleteDate,
                 PhoneNumber = u.PhoneNumber,
-                IsActive = u.IsActive,
                 Status = u.Status
             }).ToList();
 
@@ -512,7 +507,6 @@ namespace BusinessLogicLayer.Services.Implement
                 DeleteBy = u.DeleteBy,
                 DeleteDate = u.DeleteDate,
                 PhoneNumber = u.PhoneNumber,
-                IsActive = u.IsActive,
                 Status = u.Status
             }).ToList();
 

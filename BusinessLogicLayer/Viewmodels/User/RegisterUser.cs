@@ -44,7 +44,6 @@ namespace BusinessLogicLayer.Viewmodels.User
         public SleepHabit SleepHabit { get; set; }
         //------------------------------------------------------------//
 
-        public bool IsActive { get; set; }
         public int Status { get; set; }
     }
 }

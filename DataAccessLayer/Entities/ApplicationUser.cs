@@ -10,6 +10,7 @@ namespace DataAccessLayer.Entities
             SentMessages = new HashSet<Messages>();
             ReceivedMessages = new HashSet<Messages>();
             UserMessages = new HashSet<UserMessages>();
+            RelationshipActions = new HashSet<RelationshipAction>();
         }
         public DateTime? ModifieDate { get; set; }
         public string? ModifieBy { get; set; }
@@ -17,7 +18,7 @@ namespace DataAccessLayer.Entities
         public string? DeleteBy { get; set; }
         public bool IsActive { get; set; } = true;
         public int Status { get; set; } = 1;
-
+        public virtual ICollection<RelationshipAction> RelationshipActions { get; set; }
         public virtual ICollection<UserChatRooms> UserChatRooms { get; set; }
         public virtual ICollection<UserMessages> UserMessages { get; set; }
         public virtual ExtraInformation ExtraInformation { get; set; }
@@ -29,5 +30,7 @@ namespace DataAccessLayer.Entities
         public virtual ICollection<Comment> Comment { get; set; }
         public virtual ICollection<Reaction> Reaction { get; set; }
         public virtual ICollection<ImageData> ImageData { get; set; }
+        public virtual ICollection<BlockedAccount> BlockedAccounts { get; set; }
+
     }
 }
