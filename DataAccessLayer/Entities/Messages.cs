@@ -1,6 +1,5 @@
 ﻿using DataAccessLayer.Entities.Base;
 using DataAccessLayer.Entities.Intermediate;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace DataAccessLayer.Entities
 {
@@ -21,5 +20,6 @@ namespace DataAccessLayer.Entities
         public virtual ApplicationUser Receiver { get; set; }
         public virtual ICollection<ImageData> ImageData { get; set; }
         public virtual ICollection<UserMessages> UserMessages { get; set; }
+        public virtual ICollection<MessagesUserChatRooms> MessagesUserChatRooms { get; set; }
     }
 }

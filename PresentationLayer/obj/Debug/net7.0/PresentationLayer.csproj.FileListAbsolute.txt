@@ -347,3 +347,9 @@ D:\SoulMate\PresentationLayer\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Des
 D:\SoulMate\PresentationLayer\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\SoulMate\PresentationLayer\bin\Debug\net7.0\System.CodeDom.dll
 D:\SoulMate\PresentationLayer\obj\Debug\net7.0\PresentationLayer.sourcelink.json
+D:\SoulMate\PresentationLayer\bin\Debug\net7.0\Amazon.Lambda.APIGatewayEvents.dll
+D:\SoulMate\PresentationLayer\bin\Debug\net7.0\Amazon.Lambda.ApplicationLoadBalancerEvents.dll
+D:\SoulMate\PresentationLayer\bin\Debug\net7.0\Amazon.Lambda.AspNetCoreServer.dll
+D:\SoulMate\PresentationLayer\bin\Debug\net7.0\Amazon.Lambda.Core.dll
+D:\SoulMate\PresentationLayer\bin\Debug\net7.0\Amazon.Lambda.Logging.AspNetCore.dll
+D:\SoulMate\PresentationLayer\bin\Debug\net7.0\Amazon.Lambda.Serialization.SystemTextJson.dll

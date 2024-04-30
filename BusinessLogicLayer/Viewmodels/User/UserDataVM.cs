@@ -14,7 +14,6 @@
         public string Username { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string? PhoneNumber { get; set; }
-        public bool IsActive { get; set; } = true;
         public int Status { get; set; } = 1;
     }
 }

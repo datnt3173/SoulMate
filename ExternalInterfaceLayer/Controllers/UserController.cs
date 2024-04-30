@@ -16,8 +16,9 @@ namespace ExternalInterfaceLayer.Controllers
         {
             _IUserService = userService;
         }
-        [HttpGet("GetInformation/{ID}")]
-        public async Task<ActionResult<UserVM>> GetInformation(string ID)
+
+        [HttpGet("GetInformationUser/{ID}")]
+        public async Task<ActionResult<UserVM>> GetInformationUser(string ID)
         {
             var user = await _IUserService.GetInformationByID(ID);
 
@@ -29,8 +30,8 @@ namespace ExternalInterfaceLayer.Controllers
             return Ok(user); // Trả về dữ liệu người dùng dưới dạng JSON
         }
         [HttpGet]
-        [Route("GetAllInformationAsync")]
-        public async Task<IActionResult> GetAllInformationAsync()
+        [Route("GetAllInformationUserAsync")]
+        public async Task<IActionResult> GetAllInformationUserAsync()
         {
             var objCollection = await _IUserService.GetAllInformationAsync();
 
@@ -38,8 +39,8 @@ namespace ExternalInterfaceLayer.Controllers
         } 
         
         [HttpGet]
-        [Route("GetAllActiveInformationAsync")]
-        public async Task<IActionResult> GetAllActiveInformationAsync()
+        [Route("GetAllActiveInformationUserAsync")]
+        public async Task<IActionResult> GetAllActiveInformationUserAsync()
         {
             var objCollection = await _IUserService.GetAllActiveInformationAsync();
 

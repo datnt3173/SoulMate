@@ -8,7 +8,6 @@ namespace DataAccessLayer.Entities
         public string IDUser { get; set; } = null!;
         public string FirstAndLastName { get; set; } = null!;//Họ và tên
         public DateTime BirthDate { get; set; }//Năm sinh
-
         public DateTime JoinDate { get; set; }//Ngày tạo tài khoản
         public string? Bio { get; set; }//Giới thiệu
         public double? Height { get; set; }//Chiều cao

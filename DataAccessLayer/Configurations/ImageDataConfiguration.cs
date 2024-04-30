@@ -12,11 +12,10 @@ namespace DataAccessLayer.Configurations
 
             builder.Property(c => c.CreateDate).IsRequired();
             builder.Property(c => c.CreateBy).IsRequired();
-            builder.Property(c => c.ModifieBy).IsRequired(false);
-            builder.Property(c => c.ModifieDate).IsRequired(false);
+            builder.Property(c => c.ModifiedBy).IsRequired(false);
+            builder.Property(c => c.ModifiedDate).IsRequired(false);
             builder.Property(c => c.DeleteBy).IsRequired(false);
             builder.Property(c => c.DeleteDate).IsRequired(false);
-            builder.Property(c => c.IsActive).IsRequired(true);
             builder.Property(c => c.Status).IsRequired();
 
             builder.HasOne<ApplicationUser>(c => c.ApplicationUser)
@@ -27,11 +26,6 @@ namespace DataAccessLayer.Configurations
             builder.HasOne<Comment>(c => c.Comment)
                .WithMany(c => c.ImageData)
                .HasForeignKey(c => c.IDComment)
-               .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasOne<Reaction>(c => c.Reaction)
-               .WithMany(c => c.ImageData)
-               .HasForeignKey(c => c.IDReaction)
                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne<Post>(c => c.Post)

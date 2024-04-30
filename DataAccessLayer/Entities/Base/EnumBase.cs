@@ -1,7 +1,18 @@
 ﻿namespace DataAccessLayer.Entities.Base
 {
     public class EnumBase
-    { 
+    {
+        public enum ActionType
+        {
+            Like, 
+            Dislike
+        }
+        public enum PostVisibility
+        {
+            Public,     // Công khai: Tất cả mọi người đều có thể xem
+            Private,    // Riêng tư: Chỉ người tạo bài đăng có thể xem
+            //FriendsOnly // Chỉ bạn bè: Chỉ những người bạn của người tạo bài đăng có thể xem
+        }
         //Mục đích hẹn hò
         public enum DatingPurposes
         {

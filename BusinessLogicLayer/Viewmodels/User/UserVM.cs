@@ -62,7 +62,6 @@ namespace BusinessLogicLayer.Viewmodels.User
 
         //------------------------------------------------------------//
         //------------------------------------------------------------//
-        public bool IsActive { get; set; }
         public int Status { get; set; }
     }
 }

@@ -13,11 +13,10 @@ namespace DataAccessLayer.Configurations
 
             builder.Property(c => c.CreateDate).IsRequired();
             builder.Property(c => c.CreateBy).IsRequired();
-            builder.Property(c => c.ModifieBy).IsRequired(false);
-            builder.Property(c => c.ModifieDate).IsRequired(false);
+            builder.Property(c => c.ModifiedBy).IsRequired(false);
+            builder.Property(c => c.ModifiedDate).IsRequired(false);
             builder.Property(c => c.DeleteBy).IsRequired(false);
             builder.Property(c => c.DeleteDate).IsRequired(false);
-            builder.Property(c => c.IsActive).IsRequired(true);
             builder.Property(c => c.Status).IsRequired();
 
             // Cấu hình mối quan hệ

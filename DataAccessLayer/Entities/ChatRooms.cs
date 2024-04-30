@@ -5,6 +5,7 @@ namespace DataAccessLayer.Entities
 {
     public partial class ChatRooms : EntityBase
     {
+        public string CodeChatRooms { get; set; } = null!;
         public string RoomName { get; set; } = null!;
         public string? Description { get; set; } 
 

@@ -5,6 +5,7 @@ namespace DataAccessLayer.Entities
     {
         public Guid IDPost { get; set; } 
         public string IDUser { get; set; } = null!;
+        //public Guid IDParentComment { get; set; }
         public string Text { get; set; } = null!;
         public virtual Post Post { get; set; } = null!;
         public virtual ICollection<Reaction> Reaction { get; set; }

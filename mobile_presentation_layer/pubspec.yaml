@@ -14,13 +14,17 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.2.1
   flutter_easyloading: ^3.0.0
+  cookie_jar: ^2.0.0
+  jwt_decoder: ^2.0.1
+  flutter_secure_storage: ^4.2.0
+
+flutter:
+  uses-material-design: true
+
 assets:
-  - assets/web/icons/
+  - lib/images/
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-
-flutter:
-  uses-material-design: true

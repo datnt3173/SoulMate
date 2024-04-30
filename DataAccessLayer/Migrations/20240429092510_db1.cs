@@ -33,6 +33,10 @@ namespace DataAccessLayer.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -64,11 +68,10 @@ namespace DataAccessLayer.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -195,11 +198,10 @@ namespace DataAccessLayer.Migrations
                     CommunicationStyle = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -236,11 +238,10 @@ namespace DataAccessLayer.Migrations
                     Language = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -266,11 +267,10 @@ namespace DataAccessLayer.Migrations
                     IsRead = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -298,13 +298,13 @@ namespace DataAccessLayer.Migrations
                     IDUser = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PostVisibility = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -332,11 +332,10 @@ namespace DataAccessLayer.Migrations
                     SleepHabit = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -358,11 +357,10 @@ namespace DataAccessLayer.Migrations
                     IDChatRoom = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -391,11 +389,10 @@ namespace DataAccessLayer.Migrations
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -425,11 +422,10 @@ namespace DataAccessLayer.Migrations
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -454,15 +450,14 @@ namespace DataAccessLayer.Migrations
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IDUser = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IDPost = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IDComment = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IDComment = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Type = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -494,52 +489,47 @@ namespace DataAccessLayer.Migrations
                     IDPost = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IDComment = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IDReaction = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    IDUser = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IDUser = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ImageLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EncodedImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    PostID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CommentID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ReactionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MessagesID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreateBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifieDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ModifieBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeleteDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeleteBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ImageData", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_ImageData_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
+                        name: "FK_ImageData_AspNetUsers_IDUser",
+                        column: x => x.IDUser,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ImageData_Comment_CommentID",
-                        column: x => x.CommentID,
+                        name: "FK_ImageData_Comment_IDComment",
+                        column: x => x.IDComment,
                         principalTable: "Comment",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ImageData_Messages_MessagesID",
-                        column: x => x.MessagesID,
+                        name: "FK_ImageData_Messages_IDMessage",
+                        column: x => x.IDMessage,
                         principalTable: "Messages",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ImageData_Post_PostID",
-                        column: x => x.PostID,
+                        name: "FK_ImageData_Post_IDPost",
+                        column: x => x.IDPost,
                         principalTable: "Post",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ImageData_Reaction_ReactionID",
-                        column: x => x.ReactionID,
+                        name: "FK_ImageData_Reaction_IDReaction",
+                        column: x => x.IDReaction,
                         principalTable: "Reaction",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -550,8 +540,8 @@ namespace DataAccessLayer.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "309fe70c-7aef-49d7-8730-dd91494a952e", null, "Admin", "Admin" },
-                    { "f6ac905b-d728-4e27-bbfa-23c042829efe", null, "Client", "Client" }
+                    { "28d68c9c-53fd-4df3-b58b-a3507746bd69", null, "Client", "Client" },
+                    { "f27af5ab-d808-45e2-bafd-a8b35837f968", null, "Admin", "Admin" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -617,29 +607,29 @@ namespace DataAccessLayer.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImageData_ApplicationUserId",
+                name: "IX_ImageData_IDComment",
                 table: "ImageData",
-                column: "ApplicationUserId");
+                column: "IDComment");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImageData_CommentID",
+                name: "IX_ImageData_IDMessage",
                 table: "ImageData",
-                column: "CommentID");
+                column: "IDMessage");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImageData_MessagesID",
+                name: "IX_ImageData_IDPost",
                 table: "ImageData",
-                column: "MessagesID");
+                column: "IDPost");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImageData_PostID",
+                name: "IX_ImageData_IDReaction",
                 table: "ImageData",
-                column: "PostID");
+                column: "IDReaction");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ImageData_ReactionID",
+                name: "IX_ImageData_IDUser",
                 table: "ImageData",
-                column: "ReactionID");
+                column: "IDUser");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Information_IDUser",

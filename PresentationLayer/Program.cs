@@ -1,13 +1,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using DataAccessLayer.ApplicationDBContext;
+using Amazon.Lambda.AspNetCoreServer;
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("SoulMateIdentittyDBContextConnection") ?? throw new InvalidOperationException("Connection string 'SoulMateIdentittyDBContextConnection' not found.");
 
 builder.Services.AddDbContext<SoulMateIdentittyDBContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<SoulMateIdentittyDBContext>();
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
