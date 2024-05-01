@@ -4,29 +4,32 @@ class CustomSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue, // Màu nền của thanh navigation bar
-      padding: EdgeInsets.symmetric(
-          horizontal: 20, vertical: 10), // Khoảng cách lề ngang và dọc
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(40), // Bo góc container
+        border: Border.all(
+          color: Colors.black, // Màu viền
+          width: 1, // Độ rộng viền
+        ),
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 1),
       child: Row(
         children: [
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Tìm kiếm', // Gợi ý cho ô tìm kiếm
-                hintStyle: TextStyle(color: Colors.white), // Màu chữ của gợi ý
-                border: InputBorder.none, // Không có đường viền
+                hintText: 'Tìm kiếm',
+                hintStyle: TextStyle(color: Colors.black),
+                border: InputBorder.none,
               ),
-              style: TextStyle(
-                  color: Colors.white), // Màu chữ của nội dung nhập vào
+              style: TextStyle(color: Colors.black),
             ),
           ),
-          SizedBox(width: 10), // Khoảng cách giữa ô tìm kiếm và nút tìm kiếm
+          SizedBox(width: 10),
           IconButton(
-            onPressed: () {
-              // Xử lý khi nút tìm kiếm được nhấn
-            },
-            icon: Icon(Icons.search), // Biểu tượng của nút tìm kiếm
-            color: Colors.white, // Màu của biểu tượng
+            onPressed: () {},
+            icon: Icon(Icons.search),
+            color: Colors.black,
           ),
         ],
       ),
@@ -45,49 +48,51 @@ class MessageNotificationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity, // Chiều rộng bằng toàn bộ màn hình
-      height: 100, // Chiều cao của thanh thông báo
-      padding: EdgeInsets.symmetric(horizontal: 20), // Khoảng cách lề ngang
-      color: Colors.blue, // Màu nền của thanh thông báo
+      width: double.infinity,
+      height: 100,
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      color: Colors.white,
       child: Row(
         children: [
           Container(
-            width: MediaQuery.of(context).size.width *
-                0.1, // Chiều rộng của hình tròn là 10% chiều rộng màn hình
-            height: 100, // Chiều cao của hình tròn
+            width: MediaQuery.of(context).size.width * 0.2,
+            height: 100,
             decoration: BoxDecoration(
-              shape: BoxShape.circle, // Hình dạng hình tròn
-              color: Colors.white, // Màu nền của hình tròn
+              shape: BoxShape.circle,
+              color: Colors.white,
+              border: Border.all(
+                color: Colors.black, // Màu viền
+                width: 2, // Độ rộng viền
+              ),
             ),
             child: Center(
               child: Icon(
-                Icons
-                    .person, // Biểu tượng người dùng (có thể thay đổi thành biểu tượng mong muốn)
-                size: 30, // Kích thước của biểu tượng người dùng
-                color: Colors.blue, // Màu của biểu tượng người dùng
+                Icons.person,
+                size: 30,
+                color: Colors.black,
               ),
             ),
           ),
-          SizedBox(width: 20), // Khoảng cách giữa hình tròn và nội dung
+          SizedBox(width: 20),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name, // Tên người dùng
+                  name,
                   style: TextStyle(
-                    color: Colors.white, // Màu chữ
-                    fontSize: 18, // Cỡ chữ
-                    fontWeight: FontWeight.bold, // Độ đậm của chữ
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5), // Khoảng cách giữa tên và tin nhắn
+                SizedBox(height: 5),
                 Text(
-                  message, // Tin nhắn
+                  message,
                   style: TextStyle(
-                    color: Colors.white, // Màu chữ
-                    fontSize: 14, // Cỡ chữ
+                    color: Colors.black,
+                    fontSize: 14,
                   ),
                 ),
               ],
@@ -97,4 +102,35 @@ class MessageNotificationBar extends StatelessWidget {
       ),
     );
   }
+}
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          elevation: 1.0,
+          backgroundColor: Colors.black,
+          title: Text('App Title'),
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(100),
+            child: Column(
+              children: [
+                SizedBox(height: 10), // Add some space above search bar
+                CustomSearchBar(),
+              ],
+            ),
+          ),
+        ),
+        body: Column(
+          children: [
+            MessageNotificationBar(
+              name: 'Tên người dùng',
+              message: 'Tin nhắn của người dùng',
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }

@@ -1,11 +1,16 @@
 using AutoMapper.Extensions.ExpressionMapping;
+using BusinessLogicLayer.AutoMapper;
 using BusinessLogicLayer.Services.Implement;
 using BusinessLogicLayer.Services.Interface;
 using BusinessLogicLayer.Viewmodels;
+using BusinessLogicLayer.Viewmodels.ChatRooms;
 using BusinessLogicLayer.Viewmodels.Messages;
+using BusinessLogicLayer.Viewmodels.RelationshipAction;
+using BusinessLogicLayer.Viewmodels.UserChatRooms;
 using CloudinaryDotNet;
 using DataAccessLayer.ApplicationDBContext;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Entities.Intermediate;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
@@ -21,9 +26,13 @@ var mailSetting = builder.Configuration.GetSection("MailSettings");
 builder.Services.Configure<MailSettings>(mailSetting);
 builder.Services.AddSignalR();
 builder.Services.AddTransient<IMessagesService, MessagesService>();
+builder.Services.AddTransient<IRelationshipActionService, RelationshipActionService>();
+builder.Services.AddTransient<IUserChatRoomsService, UserChatRoomsService>();
+builder.Services.AddTransient<IChatRoomsService, ChatRoomsService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IPostService, PostService>();
 builder.Services.AddTransient<IReactionService, ReactionService>();
+builder.Services.AddTransient<MatchmakingAlgorithm>();
 builder.Services.AddTransient<SoulMateIdentittyDBContext>();
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<SoulMateIdentittyDBContext>()
@@ -35,7 +44,10 @@ builder.Services.AddSingleton(cloudinary);
 builder.Services.AddAutoMapper(config =>
 {
     config.AddExpressionMapping();
+    config.CreateMap<UserChatRooms, UserChatRoomsVM>();
+    config.CreateMap<RelationshipAction, RelationshipActionVM>();
     config.CreateMap<Messages, MessagesVM>();
+    config.CreateMap<ChatRooms, ChatRoomsVM>();
 }, Assembly.GetExecutingAssembly(), Assembly.GetEntryAssembly());
 
 
@@ -124,11 +136,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-//app.MapPost("broadcast", async (string message, IHubContext<ChatHub, IChatClient> context) =>
-//{
-//    await context.Clients.All.ReceiveMessage(message);
-//    return Results.NoContent();
-//});
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();

@@ -22,9 +22,15 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     Center(
       child: Text('Notifications Page'),
     ),
-    MessageNotificationBar(
-      name: 'Nhâm Tuấn Đạt',
-      message: 'Alo',
+    Column(
+      children: [
+        SizedBox(height: 40),
+        CustomSearchBar(),
+        MessageNotificationBar(
+          name: 'Tên người dùng',
+          message: 'Tin nhắn của người dùng',
+        ),
+      ],
     ),
     ProfilePage(),
   ];
