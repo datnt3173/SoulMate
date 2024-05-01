@@ -15,20 +15,20 @@ class ProfileHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(0),
+      padding: EdgeInsets.all(5),
       color: Colors.grey[200], // Màu nền của khung
       child: Row(
         children: [
           // Hình tròn chiếm 30% bên trái
           Container(
             width: MediaQuery.of(context).size.width * 0.3,
-            height: MediaQuery.of(context).size.width * 0.4,
+            height: MediaQuery.of(context).size.width * 0.5,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.blue, // Màu của hình tròn
             ),
           ),
-          SizedBox(width: 10.0), // Khoảng cách giữa hình tròn và văn bản
+          SizedBox(width: 15.0), // Khoảng cách giữa hình tròn và văn bản
 
           // Cột chứa văn bản bên phải
           Expanded(
@@ -40,6 +40,7 @@ class ProfileHeaderWidget extends StatelessWidget {
                   '$name',
                   style: TextStyle(
                     fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 10.0), // Khoảng cách giữa các dòng văn bản
