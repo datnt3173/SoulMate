@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:soulmate_match/pages/home/main_home.dart';
+import 'package:soulmate_match/pages/home/home_page.dart';
 
 class LoginAccount extends StatefulWidget {
   static String tag = 'login-page';
